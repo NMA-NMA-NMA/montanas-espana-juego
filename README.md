@@ -1,16 +1,17 @@
 # 🏔️ Montañas de España - Juego Educativo Interactivo
 
 [![Licencia CC BY-NC-SA 4.0](https://img.shields.io/badge/Licencia-CC%20BY--NC--SA%204.0-orange)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
-[![GitHub](https://img.shields.io/badge/GitHub-NMA--NMA--NMA-blue)](https://github.com/NMA-NMA-NMA)
+[![Autor](https://img.shields.io/badge/Autor-Nirian%20Martin-blue)](mailto:nimartin@ucm.es)
 [![Educativo](https://img.shields.io/badge/Tipo-Educativo-green)](https://github.com/NMA-NMA-NMA/montanas-espana-juego)
 
 ---
 
 ## 👨‍💻 Autoría
 
-**Autor Original:** `NMA-NMA-NMA`
+**Autor:** `Nirian Martin`
+**Email:** `nimartin@ucm.es`
 
-Este es un proyecto educativo creado íntegramente por **NMA-NMA-NMA** con el propósito de enseñar geografía de España de forma interactiva y divertida.
+Este es un proyecto educativo creado íntegramente por **Nirian Martin** con el propósito de enseñar geografía de España de forma interactiva y divertida.
 
 ---
 
@@ -41,28 +42,23 @@ Un juego interactivo para que los niños aprendan a identificar las principales 
 
 ## 🏔️ Zonas Montañosas Incluidas (17 en total)
 
-### Sistemas Montañosos:
 1. **Macizo Galaico** - Noroeste de España
 2. **Montes de León** - Noroeste
-3. **Cordillera Cantábrica** - Norte
-4. **Montes Vascos** - Noreste
-5. **Pirineos** - Frontera con Francia
-6. **Sistema Ibérico** - Centro-Este
-7. **Cordillera del Guadarrama** - Centro
-8. **Sistema Central** - Centro
-9. **Montes de Toledo** - Centro-Sur
-10. **Sierra Morena** - Sur
-11. **Cordillera Penibética** - Sureste
-12. **Montes de Córdoba** - Sur
-
-### Depresiones y Submesetas:
-13. **Depresión del Ebro** - Noreste
-14. **Submeseta Norte** - Centro-Norte
-15. **Submeseta Sur** - Centro-Sur
+3. **Montes de la Cordillera Cantábrica** - Norte
+4. **Cordillera Cantábrica** - Norte
+5. **Pirineo** - Frontera con Francia
+6. **Montes Vascos** - Noreste
+7. **Submeseta Norte** - Centro-Norte
+8. **Sistema Ibérico** - Centro-Este
+9. **Depresión del Ebro** - Noreste
+10. **Cordillera Central** - Centro
+11. **Montes de Toledo** - Centro-Sur
+12. **Montes Vascos** - Noreste
+13. **Cordillera Penibética** - Sureste
+14. **Submeseta Sur** - Centro-Sur
+15. **Sierra Morena** - Sur
 16. **Depresión del Guadalquivir** - Sur
-
-### Islas:
-17. **Telde (Canarias)** - Archipiélago
+17. **Teide** - Canarias
 
 ---
 
@@ -99,6 +95,8 @@ Incluye todas las principales formaciones geográficas de España:
 
 **Licencia:** [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
 
+**Autor:** Nirian Martin (nimartin@ucm.es)
+
 ### Esto significa:
 
 ✅ **Permitido:**
@@ -113,14 +111,22 @@ Incluye todas las principales formaciones geográficas de España:
 
 ### Atribución requerida:
 
-Si utilizas, modificas o compartes este proyecto, **debes dar crédito al autor original: NMA-NMA-NMA** y mencionar que está bajo licencia CC BY-NC-SA 4.0.
+Si utilizas, modificas o compartes este proyecto, **debes dar crédito al autor original: Nirian Martin** y mencionar que está bajo licencia CC BY-NC-SA 4.0.
 
 **Ejemplo de atribución:**
 ```
-"Montañas de España - Juego Educativo" por NMA-NMA-NMA 
+"Montañas de España - Juego Educativo" por Nirian Martin (nimartin@ucm.es)
 bajo licencia CC BY-NC-SA 4.0
 https://github.com/NMA-NMA-NMA/montanas-espana-juego
 ```
+
+---
+
+## 📍 Fuentes de Datos
+
+- **Mapa base:** [OpenStreetMap](https://www.openstreetmap.org/) - Datos cartográficos libres y gratuitos
+- **Librería de mapas:** [Leaflet.js](https://leafletjs.com/) - Visualización interactiva
+- **Referencia geográfica:** Datos geográficos estándar de educación primaria
 
 ---
 
@@ -143,7 +149,7 @@ Para consultas sobre:
 - 🤝 Colaboraciones
 - 🐛 Reportar problemas
 
-**Contacta al autor:** NMA-NMA-NMA en GitHub
+**Contacta al autor:** Nirian Martin (nimartin@ucm.es)
 
 ---
 
@@ -152,7 +158,7 @@ Para consultas sobre:
 - 📖 [Licencia CC BY-NC-SA 4.0 (Completa)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
 - 🗺️ [Leaflet.js Documentation](https://leafletjs.com/)
 - 🌍 [OpenStreetMap](https://www.openstreetmap.org/)
-- 👤 [Perfil del Autor](https://github.com/NMA-NMA-NMA)
+- 👤 [Repositorio GitHub](https://github.com/NMA-NMA-NMA/montanas-espana-juego)
 
 ---
 
