@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montañas de España - Juego Interactivo | Autor: NMA-NMA-NMA</title>
+    <title>Montañas de España - Juego Interactivo | Autor: Nirian Martin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <style>
@@ -241,12 +241,13 @@
 
         <div class="credits">
             <h3>👨‍💻 Créditos y Autoría</h3>
-            <div class="author-badge">👤 Autor Original: NMA-NMA-NMA</div>
-            <p><strong>Este es un proyecto educativo creado por NMA-NMA-NMA</strong></p>
+            <div class="author-badge">👤 Autor: Nirian Martin</div>
+            <p><strong>📧 Email: <a href="mailto:nimartin@ucm.es">nimartin@ucm.es</a></strong></p>
+            <p><strong>Este es un proyecto educativo creado por Nirian Martin</strong></p>
             <p>Herramienta interactiva para la enseñanza de geografía de España</p>
             
             <div style="margin: 15px 0;">
-                <span class="license-badge">📜 CC BY-NC-SA 4.0</span>
+                <span class="license-badge">📄 CC BY-NC-SA 4.0</span>
                 <span class="license-badge">🔒 No Comercial</span>
             </div>
             
@@ -273,21 +274,21 @@
         const zonas = [
             { id: 1, nombre: 'Macizo Galaico', lat: 42.5, lng: -8.0, color: '#e74c3c' },
             { id: 2, nombre: 'Montes de León', lat: 42.7, lng: -6.0, color: '#e74c3c' },
-            { id: 3, nombre: 'Cordillera Cantábrica', lat: 43.2, lng: -4.5, color: '#e74c3c' },
-            { id: 4, nombre: 'Montes Vascos', lat: 42.9, lng: -2.7, color: '#e74c3c' },
-            { id: 5, nombre: 'Pirineos', lat: 42.6, lng: 0.5, color: '#e74c3c' },
-            { id: 6, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.0, color: '#f39c12' },
-            { id: 7, nombre: 'Sistema Ibérico', lat: 41.5, lng: -1.8, color: '#e74c3c' },
-            { id: 8, nombre: 'Submeseta Norte', lat: 41.2, lng: -3.5, color: '#f39c12' },
-            { id: 9, nombre: 'Cordillera del Guadarrama', lat: 40.8, lng: -3.9, color: '#e74c3c' },
-            { id: 10, nombre: 'Sistema Central', lat: 40.5, lng: -4.5, color: '#e74c3c' },
+            { id: 3, nombre: 'Montes de la Cordillera Cantábrica', lat: 43.2, lng: -4.5, color: '#e74c3c' },
+            { id: 4, nombre: 'Cordillera Cantábrica', lat: 43.0, lng: -3.5, color: '#e74c3c' },
+            { id: 5, nombre: 'Pirineo', lat: 42.6, lng: 0.5, color: '#e74c3c' },
+            { id: 6, nombre: 'Montes Vascos', lat: 42.9, lng: -2.7, color: '#e74c3c' },
+            { id: 7, nombre: 'Submeseta Norte', lat: 41.2, lng: -3.5, color: '#f39c12' },
+            { id: 8, nombre: 'Sistema Ibérico', lat: 41.5, lng: -1.8, color: '#e74c3c' },
+            { id: 9, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.0, color: '#f39c12' },
+            { id: 10, nombre: 'Cordillera Central', lat: 40.5, lng: -4.5, color: '#e74c3c' },
             { id: 11, nombre: 'Montes de Toledo', lat: 39.9, lng: -4.0, color: '#e74c3c' },
             { id: 12, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },
-            { id: 13, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },
-            { id: 14, nombre: 'Depresión del Guadalquivir', lat: 37.8, lng: -4.5, color: '#f39c12' },
-            { id: 15, nombre: 'Montes de Córdoba', lat: 38.5, lng: -4.2, color: '#e74c3c' },
-            { id: 16, nombre: 'Cordillera Penibética', lat: 37.0, lng: -3.5, color: '#e74c3c' },
-            { id: 17, nombre: 'Telde (Canarias)', lat: 27.9, lng: -15.6, color: '#e74c3c' }
+            { id: 13, nombre: 'Cordillera Penibética', lat: 37.0, lng: -3.5, color: '#e74c3c' },
+            { id: 14, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },
+            { id: 15, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },
+            { id: 16, nombre: 'Depresión del Guadalquivir', lat: 37.8, lng: -4.5, color: '#f39c12' },
+            { id: 17, nombre: 'Teide', lat: 28.2, lng: -16.6, color: '#e74c3c' }
         ];
 
         let nombreSeleccionado = null;
@@ -327,7 +328,7 @@
             Object.values(botones).forEach(b => b.classList.remove('seleccionado'));
             btn.classList.add('seleccionado');
             nombreSeleccionado = id;
-            document.getElementById('mensaje').textContent = '🎯 Ahora haz clic en su ubicación en el mapa';
+            document.getElementById('mensaje').textContent = '🏔️ Ahora haz clic en su ubicación en el mapa';
             document.getElementById('mensaje').style.color = '#667eea';
         }
 
