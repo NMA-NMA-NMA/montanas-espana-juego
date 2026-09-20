@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montañas de España - Juego Educativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🏔️ Identificar Montañas de España</h1>
+        <p class="instrucciones">Arrastra cada nombre de montaña hacia su ubicación correcta en el mapa</p>
+        
+        <div class="juego-container">
+            <div class="mapa-section">
+                <img src="mapa-espana.svg" alt="Mapa de España" class="mapa">
+                <div class="zona" data-montana="Macizo Galaico"></div>
+                <div class="zona" data-montana="Montes de León"></div>
+                <div class="zona" data-montana="Cordillera Cantábrica"></div>
+                <div class="zona" data-montana="Montes de Toledo"></div>
+                <div class="zona" data-montana="Sistema Central"></div>
+                <div class="zona" data-montana="Cordillera del Guadarrama"></div>
+                <div class="zona" data-montana="Depresión del Ebro"></div>
+                <div class="zona" data-montana="Sistema Ibérico"></div>
+                <div class="zona" data-montana="Submeseta Norte"></div>
+                <div class="zona" data-montana="Pirineos"></div>
+                <div class="zona" data-montana="Montes Vascos"></div>
+                <div class="zona" data-montana="Submeseta Sur"></div>
+                <div class="zona" data-montana="Sierra Morena"></div>
+                <div class="zona" data-montana="Depresión del Guadalquivir"></div>
+                <div class="zona" data-montana="Montes de Córdoba"></div>
+                <div class="zona" data-montana="Cordillera Penibética"></div>
+                <div class="zona" data-montana="Telde"></div>
+            </div>
+            
+            <div class="nombres-section">
+                <h3>Arrastra los nombres:</h3>
+                <div class="nombres-container" id="nombresContainer">
+                    <!-- Se genera con JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-game">
+            <p>Puntuación: <span id="puntuacion">0</span> / 17</p>
+            <button id="reiniciar" class="btn-reiniciar">🔄 Reiniciar Juego</button>
+        </div>
+        
+        <div id="mensaje" class="mensaje"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

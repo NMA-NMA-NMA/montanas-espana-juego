@@ -1,0 +1,26 @@
+<svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo océano -->
+  <rect width="600" height="700" fill="#E3F2FD"/>
+  
+  <!-- Silueta de España simplificada -->
+  <path d="M 100 120 L 180 100 L 240 90 L 300 95 L 340 85 L 400 100 L 450 130 L 480 160 L 510 200 L 530 260 L 540 320 L 520 380 L 490 420 L 450 450 L 400 470 L 340 480 L 280 485 L 220 480 L 160 470 L 120 450 L 100 420 L 80 380 L 70 330 L 60 280 L 70 220 L 90 170 Z" fill="#FDD835" stroke="#666" stroke-width="2"/>
+  
+  <!-- Depresión del Ebro -->
+  <ellipse cx="340" cy="200" rx="80" ry="60" fill="#FFEB99" stroke="#999" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Pirineos (norte) -->
+  <path d="M 300 90 Q 350 75 400 90" stroke="#90A955" stroke-width="3" fill="none"/>
+  
+  <!-- Islas principales -->
+  <!-- Canarias (simplificadas) -->
+  <circle cx="480" cy="600" r="10" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  <circle cx="505" cy="620" r="8" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  
+  <!-- Baleares -->
+  <circle cx="420" cy="320" r="6" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  <circle cx="435" cy="310" r="5" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  
+  <!-- Título -->
+  <text x="300" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Mapa de España - Relieve</text>
+  <text x="300" y="65" font-size="14" text-anchor="middle" fill="#666">Zonas Montañosas y Sistemas de Relieve</text>
+</svg>
