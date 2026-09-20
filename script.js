@@ -2,14 +2,14 @@ const montanas = [
     'Macizo Galaico',
     'Montes de León',
     'Cordillera Cantábrica',
-    'Montes de Toledo',
-    'Sistema Central',
-    'Cordillera del Guadarrama',
+    'Pirineos',
+    'Montes Vascos',
     'Depresión del Ebro',
     'Sistema Ibérico',
     'Submeseta Norte',
-    'Pirineos',
-    'Montes Vascos',
+    'Cordillera del Guadarrama',
+    'Sistema Central',
+    'Montes de Toledo',
     'Submeseta Sur',
     'Sierra Morena',
     'Depresión del Guadalquivir',
@@ -20,6 +20,7 @@ const montanas = [
 
 let aciertos = 0;
 let seleccionada = null;
+let seleccionadaZona = null;
 
 // Inicializar el juego
 function iniciarJuego() {
@@ -39,11 +40,12 @@ function iniciarJuego() {
         container.appendChild(btn);
     });
     
-    // Posicionar zonas en el mapa (según el mapa proporcionado)
-    posicionarZonas();
+    // Agregar click listeners a las zonas
+    agregarListenerZonas();
     
     aciertos = 0;
     seleccionada = null;
+    seleccionadaZona = null;
     actualizarPuntuacion();
     limpiarMensaje();
 }
@@ -53,22 +55,29 @@ function seleccionarNombre(btn, montana) {
     
     // Si hay una seleccionada, deselecciona
     if (seleccionada && seleccionada !== btn) {
-        seleccionada.style.opacity = '1';
+        seleccionada.classList.remove('seleccionada');
     }
     
     // Alternar selección
     if (btn === seleccionada) {
-        btn.style.opacity = '1';
+        btn.classList.remove('seleccionada');
         seleccionada = null;
     } else {
-        btn.style.opacity = '0.7';
+        btn.classList.add('seleccionada');
         seleccionada = btn;
     }
 }
 
+function agregarListenerZonas() {
+    const zonas = document.querySelectorAll('.zona');
+    zonas.forEach(zona => {
+        zona.onclick = () => seleccionarZona(zona);
+    });
+}
+
 function seleccionarZona(zona) {
     if (!seleccionada) {
-        mostrarMensaje('Primero selecciona un nombre', false);
+        mostrarMensaje('Primero selecciona un nombre ⬅️', false);
         return;
     }
     
@@ -77,21 +86,21 @@ function seleccionarZona(zona) {
     
     if (montanaZona === montanaSeleccionada) {
         zona.classList.add('activa');
-        zona.textContent = montanaZona;
+        zona.textContent = montanaZona.split(' ').slice(0, 2).join(' ');
         seleccionada.classList.add('usado');
-        seleccionada.style.opacity = '1';
+        seleccionada.classList.remove('seleccionada');
         aciertos++;
-        mostrarMensaje('¡Correcto! 🎉', true);
+        mostrarMensaje('✅ ¡Correcto!', true);
         seleccionada = null;
         actualizarPuntuacion();
         
         if (aciertos === montanas.length) {
             setTimeout(() => {
-                mostrarMensaje('¡Completaste el juego! Excelente trabajo 🏆', 'completo');
+                mostrarMensaje('🏆 ¡Completaste el juego! ¡Excelente trabajo!', 'completo');
             }, 500);
         }
     } else {
-        mostrarMensaje('Intenta de nuevo ❌', false);
+        mostrarMensaje('❌ Intenta de nuevo', false);
         zona.style.animation = 'shake 0.5s';
         setTimeout(() => {
             zona.style.animation = '';
@@ -124,42 +133,12 @@ function limpiarMensaje() {
     mensajeDiv.textContent = '';
 }
 
-function posicionarZonas() {
-    const zonas = document.querySelectorAll('.zona');
-    // Posiciones basadas en el mapa proporcionado con números del 1-17
-    const posiciones = [
-        { top: '20%', left: '8%' },   // 1. Macizo Galaico
-        { top: '15%', left: '18%' },  // 2. Montes de León
-        { top: '12%', left: '28%' },  // 3. Cordillera Cantábrica
-        { top: '50%', left: '35%' },  // 4. Montes de Toledo
-        { top: '38%', left: '42%' },  // 5. Sistema Central
-        { top: '32%', left: '50%' },  // 6. Cordillera del Guadarrama
-        { top: '28%', left: '55%' },  // 7. Depresión del Ebro
-        { top: '35%', left: '62%' },  // 8. Sistema Ibérico
-        { top: '28%', left: '45%' },  // 9. Submeseta Norte
-        { top: '8%', left: '50%' },   // 10. Pirineos
-        { top: '20%', left: '38%' },  // 11. Montes Vascos
-        { top: '52%', left: '50%' },  // 12. Submeseta Sur
-        { top: '58%', left: '35%' },  // 13. Sierra Morena
-        { top: '62%', left: '42%' },  // 14. Depresión del Guadalquivir
-        { top: '60%', left: '48%' },  // 15. Montes de Córdoba
-        { top: '72%', left: '60%' },  // 16. Cordillera Penibética
-        { top: '85%', left: '15%' }   // 17. Telde (Canarias)
-    ];
-    
-    zonas.forEach((zona, index) => {
-        zona.style.top = posiciones[index].top;
-        zona.style.left = posiciones[index].left;
-        zona.onclick = () => seleccionarZona(zona);
-    });
-}
-
 // Reiniciar juego
 document.getElementById('reiniciar').onclick = () => {
     location.reload();
 };
 
-// Añadir animación CSS dinámicamente
+// Agregar animación CSS dinámicamente
 const style = document.createElement('style');
 style.textContent = `
     @keyframes shake {
