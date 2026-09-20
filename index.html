@@ -80,6 +80,7 @@
             font-weight: 600;
             transition: all 0.3s;
             color: #333;
+            font-size: 0.9rem;
         }
         .btn-nombre:hover:not(.acertado) {
             background: #e7f3ff;
@@ -271,23 +272,25 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
+        // Coordenadas basadas en el mapa topográfico de tu hija
+        // Convertidas a latitud/longitud aproximadas
         const zonas = [
-            { id: 1, nombre: 'Macizo Galaico', lat: 42.5, lng: -8.0, color: '#e74c3c' },
-            { id: 2, nombre: 'Montes de León', lat: 42.7, lng: -6.0, color: '#e74c3c' },
-            { id: 3, nombre: 'Montes de la Cordillera Cantábrica', lat: 43.2, lng: -4.5, color: '#e74c3c' },
-            { id: 4, nombre: 'Cordillera Cantábrica', lat: 43.0, lng: -3.5, color: '#e74c3c' },
+            { id: 1, nombre: 'Macizo Galaico', lat: 42.7, lng: -8.3, color: '#e74c3c' },
+            { id: 2, nombre: 'Montes de León', lat: 42.3, lng: -6.5, color: '#e74c3c' },
+            { id: 3, nombre: 'Cordillera Cantábrica', lat: 43.2, lng: -4.2, color: '#e74c3c' },
+            { id: 4, nombre: 'Montes Vascos', lat: 43.1, lng: -2.5, color: '#e74c3c' },
             { id: 5, nombre: 'Pirineo', lat: 42.6, lng: 0.5, color: '#e74c3c' },
-            { id: 6, nombre: 'Montes Vascos', lat: 42.9, lng: -2.7, color: '#e74c3c' },
-            { id: 7, nombre: 'Submeseta Norte', lat: 41.2, lng: -3.5, color: '#f39c12' },
-            { id: 8, nombre: 'Sistema Ibérico', lat: 41.5, lng: -1.8, color: '#e74c3c' },
-            { id: 9, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.0, color: '#f39c12' },
-            { id: 10, nombre: 'Cordillera Central', lat: 40.5, lng: -4.5, color: '#e74c3c' },
-            { id: 11, nombre: 'Montes de Toledo', lat: 39.9, lng: -4.0, color: '#e74c3c' },
-            { id: 12, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },
-            { id: 13, nombre: 'Cordillera Penibética', lat: 37.0, lng: -3.5, color: '#e74c3c' },
-            { id: 14, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },
-            { id: 15, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },
-            { id: 16, nombre: 'Depresión del Guadalquivir', lat: 37.8, lng: -4.5, color: '#f39c12' },
+            { id: 6, nombre: 'Submeseta Norte', lat: 41.5, lng: -3.5, color: '#f39c12' },
+            { id: 7, nombre: 'Sistema Ibérico', lat: 41.2, lng: -1.8, color: '#e74c3c' },
+            { id: 8, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.2, color: '#f39c12' },
+            { id: 9, nombre: 'Cordillera Costero-Catalana', lat: 42.0, lng: 1.8, color: '#e74c3c' },
+            { id: 10, nombre: 'Sistema Central', lat: 40.5, lng: -3.8, color: '#e74c3c' },
+            { id: 11, nombre: 'Montes de Toledo', lat: 39.8, lng: -3.5, color: '#e74c3c' },
+            { id: 12, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.8, color: '#f39c12' },
+            { id: 13, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },
+            { id: 14, nombre: 'Depresión del Guadalquivir', lat: 37.5, lng: -4.5, color: '#f39c12' },
+            { id: 15, nombre: 'Sistemas Béticos', lat: 37.2, lng: -3.5, color: '#e74c3c' },
+            { id: 16, nombre: 'Sierra de Tramuntana', lat: 39.8, lng: 2.7, color: '#e74c3c' },
             { id: 17, nombre: 'Teide', lat: 28.2, lng: -16.6, color: '#e74c3c' }
         ];
 
