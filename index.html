@@ -14,29 +14,29 @@
         <div class="juego-container">
             <div class="mapa-section">
                 <div class="mapa-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Spain_topography_map_en.png/1200px-Spain_topography_map_en.png" alt="Mapa de España" class="mapa">
-                    <div class="zona" data-montana="Macizo Galaico" style="top: 15%; left: 8%;"></div>
-                    <div class="zona" data-montana="Montes de León" style="top: 12%; left: 18%;"></div>
-                    <div class="zona" data-montana="Cordillera Cantábrica" style="top: 10%; left: 28%;"></div>
-                    <div class="zona" data-montana="Pirineos" style="top: 5%; left: 50%;"></div>
-                    <div class="zona" data-montana="Montes Vascos" style="top: 15%; left: 38%;"></div>
-                    <div class="zona" data-montana="Depresión del Ebro" style="top: 25%; left: 55%;"></div>
-                    <div class="zona" data-montana="Sistema Ibérico" style="top: 30%; left: 60%;"></div>
-                    <div class="zona" data-montana="Submeseta Norte" style="top: 28%; left: 40%;"></div>
-                    <div class="zona" data-montana="Cordillera del Guadarrama" style="top: 35%; left: 45%;"></div>
-                    <div class="zona" data-montana="Sistema Central" style="top: 38%; left: 40%;"></div>
-                    <div class="zona" data-montana="Montes de Toledo" style="top: 48%; left: 38%;"></div>
-                    <div class="zona" data-montana="Submeseta Sur" style="top: 50%; left: 50%;"></div>
-                    <div class="zona" data-montana="Sierra Morena" style="top: 58%; left: 35%;"></div>
-                    <div class="zona" data-montana="Depresión del Guadalquivir" style="top: 62%; left: 38%;"></div>
-                    <div class="zona" data-montana="Montes de Córdoba" style="top: 60%; left: 45%;"></div>
-                    <div class="zona" data-montana="Cordillera Penibética" style="top: 72%; left: 58%;"></div>
-                    <div class="zona" data-montana="Telde" style="top: 88%; left: 5%;"></div>
+                    <img src="mapa-espana.svg" alt="Mapa de España" class="mapa" id="mapaImg">
+                    <div class="zona" data-montana="Macizo Galaico" style="top: 12%; left: 12%;">1</div>
+                    <div class="zona" data-montana="Montes de León" style="top: 15%; left: 22%;">2</div>
+                    <div class="zona" data-montana="Cordillera Cantábrica" style="top: 18%; left: 30%;">3</div>
+                    <div class="zona" data-montana="Montes Vascos" style="top: 22%; left: 40%;">11</div>
+                    <div class="zona" data-montana="Pirineos" style="top: 8%; left: 45%;">10</div>
+                    <div class="zona" data-montana="Depresión del Ebro" style="top: 28%; left: 55%;">7</div>
+                    <div class="zona" data-montana="Sistema Ibérico" style="top: 32%; left: 62%;">8</div>
+                    <div class="zona" data-montana="Submeseta Norte" style="top: 30%; left: 42%;">9</div>
+                    <div class="zona" data-montana="Cordillera del Guadarrama" style="top: 37%; left: 48%;">6</div>
+                    <div class="zona" data-montana="Sistema Central" style="top: 40%; left: 42%;">5</div>
+                    <div class="zona" data-montana="Montes de Toledo" style="top: 48%; left: 40%;">4</div>
+                    <div class="zona" data-montana="Submeseta Sur" style="top: 50%; left: 52%;">12</div>
+                    <div class="zona" data-montana="Sierra Morena" style="top: 58%; left: 38%;">13</div>
+                    <div class="zona" data-montana="Depresión del Guadalquivir" style="top: 62%; left: 42%;">14</div>
+                    <div class="zona" data-montana="Montes de Córdoba" style="top: 60%; left: 48%;">15</div>
+                    <div class="zona" data-montana="Cordillera Penibética" style="top: 71%; left: 62%;">16</div>
+                    <div class="zona" data-montana="Telde" style="top: 78%; left: 15%;">17</div>
                 </div>
             </div>
             
             <div class="nombres-section">
-                <h3>Selecciona y localiza:</h3>
+                <h3>📍 Selecciona y localiza:</h3>
                 <div class="nombres-container" id="nombresContainer">
                     <!-- Se genera con JavaScript -->
                 </div>
@@ -44,7 +44,7 @@
         </div>
         
         <div class="info-game">
-            <p>Puntuación: <span id="puntuacion">0</span> / 17</p>
+            <p>⭐ Puntuación: <span id="puntuacion">0</span> / 17</p>
             <button id="reiniciar" class="btn-reiniciar">🔄 Reiniciar Juego</button>
         </div>
         
