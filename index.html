@@ -1,1 +1,270 @@
-<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Montañas de España - Juego Interactivo</title>\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css\" />\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js\"></script>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        body {\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            min-height: 100vh;\n            padding: 20px;\n        }\n        .container {\n            max-width: 1400px;\n            margin: 0 auto;\n        }\n        .header {\n            text-align: center;\n            color: white;\n            margin-bottom: 30px;\n        }\n        .header h1 {\n            font-size: 2.5rem;\n            margin-bottom: 10px;\n            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);\n        }\n        .header p {\n            font-size: 1.1rem;\n            opacity: 0.95;\n        }\n        .game-wrapper {\n            display: grid;\n            grid-template-columns: 1fr 350px;\n            gap: 20px;\n            margin-bottom: 20px;\n        }\n        .map-container {\n            background: white;\n            border-radius: 15px;\n            box-shadow: 0 10px 40px rgba(0,0,0,0.2);\n            overflow: hidden;\n            height: 600px;\n        }\n        #map {\n            width: 100%;\n            height: 100%;\n        }\n        .sidebar {\n            background: white;\n            border-radius: 15px;\n            padding: 20px;\n            box-shadow: 0 10px 40px rgba(0,0,0,0.2);\n            overflow-y: auto;\n            max-height: 600px;\n        }\n        .sidebar h3 {\n            color: #667eea;\n            margin-bottom: 15px;\n            font-size: 1.2rem;\n        }\n        .nombres-list {\n            display: flex;\n            flex-direction: column;\n            gap: 10px;\n        }\n        .btn-nombre {\n            padding: 12px;\n            border: 2px solid #ddd;\n            background: #f8f9fa;\n            border-radius: 8px;\n            cursor: pointer;\n            font-weight: 600;\n            transition: all 0.3s;\n            color: #333;\n        }\n        .btn-nombre:hover:not(.acertado) {\n            background: #e7f3ff;\n            border-color: #667eea;\n            transform: translateX(5px);\n        }\n        .btn-nombre.seleccionado {\n            background: #667eea;\n            color: white;\n            border-color: #667eea;\n            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);\n        }\n        .btn-nombre.acertado {\n            background: #27ae60;\n            color: white;\n            border-color: #27ae60;\n            cursor: default;\n        }\n        .mensaje {\n            background: white;\n            padding: 15px;\n            border-radius: 8px;\n            margin-top: 15px;\n            min-height: 50px;\n            text-align: center;\n            font-weight: 600;\n            color: #667eea;\n        }\n        .footer {\n            background: white;\n            padding: 20px;\n            border-radius: 15px;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            box-shadow: 0 10px 40px rgba(0,0,0,0.2);\n        }\n        .score {\n            font-size: 1.3rem;\n            font-weight: bold;\n            color: #667eea;\n        }\n        .btn-reiniciar {\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            color: white;\n            border: none;\n            padding: 12px 30px;\n            border-radius: 8px;\n            font-size: 1rem;\n            font-weight: bold;\n            cursor: pointer;\n            transition: transform 0.2s, box-shadow 0.2s;\n        }\n        .btn-reiniciar:hover {\n            transform: translateY(-2px);\n            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);\n        }\n        @media (max-width: 768px) {\n            .game-wrapper {\n                grid-template-columns: 1fr;\n            }\n            .header h1 {\n                font-size: 1.8rem;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>🗺️ Montañas de España</h1>\n            <p>Identifica cada zona geográfica en el mapa interactivo</p>\n        </div>\n\n        <div class=\"game-wrapper\">\n            <!-- MAPA -->\n            <div class=\"map-container\">\n                <div id=\"map\"></div>\n            </div>\n\n            <!-- SIDEBAR -->\n            <div class=\"sidebar\">\n                <h3>📍 Localiza:</h3>\n                <div class=\"nombres-list\" id=\"nombresList\"></div>\n                <div class=\"mensaje\" id=\"mensaje\">¡Elige un nombre para empezar!</div>\n            </div>\n        </div>\n\n        <!-- FOOTER -->\n        <div class=\"footer\">\n            <div class=\"score\">⭐ Puntuación: <span id=\"puntuacion\">0</span> / 17</div>\n            <button class=\"btn-reiniciar\" onclick=\"location.reload()\">🔄 Reiniciar Juego</button>\n        </div>\n    </div>\n\n    <script>\n        // Inicializar mapa centrado en España\n        const map = L.map('map').setView([40.5, -3.7], 6);\n        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {\n            maxZoom: 12,\n            attribution: '© OpenStreetMap'\n        }).addTo(map);\n\n        // Datos de las 17 zonas\n        const zonas = [\n            { id: 1, nombre: 'Macizo Galaico', lat: 42.5, lng: -8.0, color: '#e74c3c' },\n            { id: 2, nombre: 'Montes de León', lat: 42.7, lng: -6.0, color: '#e74c3c' },\n            { id: 3, nombre: 'Cordillera Cantábrica', lat: 43.2, lng: -4.5, color: '#e74c3c' },\n            { id: 4, nombre: 'Montes Vascos', lat: 42.9, lng: -2.7, color: '#e74c3c' },\n            { id: 5, nombre: 'Pirineos', lat: 42.6, lng: 0.5, color: '#e74c3c' },\n            { id: 6, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.0, color: '#f39c12' },\n            { id: 7, nombre: 'Sistema Ibérico', lat: 41.5, lng: -1.8, color: '#e74c3c' },\n            { id: 8, nombre: 'Submeseta Norte', lat: 41.2, lng: -3.5, color: '#f39c12' },\n            { id: 9, nombre: 'Cordillera del Guadarrama', lat: 40.8, lng: -3.9, color: '#e74c3c' },\n            { id: 10, nombre: 'Sistema Central', lat: 40.5, lng: -4.5, color: '#e74c3c' },\n            { id: 11, nombre: 'Montes de Toledo', lat: 39.9, lng: -4.0, color: '#e74c3c' },\n            { id: 12, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },\n            { id: 13, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },\n            { id: 14, nombre: 'Depresión del Guadalquivir', lat: 37.8, lng: -4.5, color: '#f39c12' },\n            { id: 15, nombre: 'Montes de Córdoba', lat: 38.5, lng: -4.2, color: '#e74c3c' },\n            { id: 16, nombre: 'Cordillera Penibética', lat: 37.0, lng: -3.5, color: '#e74c3c' },\n            { id: 17, nombre: 'Telde (Canarias)', lat: 27.9, lng: -15.6, color: '#e74c3c' }\n        ];\n\n        let nombreSeleccionado = null;\n        let aciertos = 0;\n        const markers = {};\n        const botones = {};\n\n        // Crear botones en sidebar\n        const nombresList = document.getElementById('nombresList');\n        zonas.forEach(zona => {\n            const btn = document.createElement('button');\n            btn.className = 'btn-nombre';\n            btn.textContent = zona.nombre;\n            btn.dataset.id = zona.id;\n            btn.onclick = () => seleccionarNombre(zona.id, btn);\n            nombresList.appendChild(btn);\n            botones[zona.id] = btn;\n        });\n\n        // Crear markers en el mapa\n        zonas.forEach(zona => {\n            const marker = L.circleMarker([zona.lat, zona.lng], {\n                radius: 15,\n                fillColor: zona.color,\n                color: '#fff',\n                weight: 3,\n                opacity: 1,\n                fillOpacity: 0.8,\n                className: 'zona-marker'\n            }).addTo(map);\n\n            // Agregar número en el marker\n            const label = L.divIcon({\n                html: `<div style=\"font-size: 14px; font-weight: bold; color: white; text-align: center; line-height: 30px;\">${zona.id}</div>`,\n                iconSize: [30, 30],\n                className: 'marker-label'\n            });\n\n            marker.bindPopup(`<b>${zona.nombre}</b>`);\n            marker.on('click', () => verificarRespuesta(zona.id));\n            markers[zona.id] = marker;\n        });\n\n        function seleccionarNombre(id, btn) {\n            if (btn.classList.contains('acertado')) return;\n\n            // Limpiar selección anterior\n            Object.values(botones).forEach(b => b.classList.remove('seleccionado'));\n\n            // Seleccionar nuevo\n            btn.classList.add('seleccionado');\n            nombreSeleccionado = id;\n            document.getElementById('mensaje').textContent = '🎯 Ahora haz clic en su ubicación en el mapa';\n            document.getElementById('mensaje').style.color = '#667eea';\n        }\n\n        function verificarRespuesta(id) {\n            if (!nombreSeleccionado) {\n                document.getElementById('mensaje').textContent = '⚠️ Primero selecciona un nombre';\n                document.getElementById('mensaje').style.color = '#e74c3c';\n                return;\n            }\n\n            if (id === nombreSeleccionado) {\n                // ¡Acierto!\n                markers[id].setStyle({ fillColor: '#27ae60' });\n                botones[id].classList.remove('seleccionado');\n                botones[id].classList.add('acertado');\n\n                document.getElementById('mensaje').textContent = '✅ ¡Correcto! 🎉';\n                document.getElementById('mensaje').style.color = '#27ae60';\n\n                aciertos++;\n                document.getElementById('puntuacion').textContent = aciertos;\n\n                nombreSeleccionado = null;\n\n                if (aciertos === 17) {\n                    document.getElementById('mensaje').textContent = '🏆 ¡FELICIDADES! ¡Has completado el mapa!';\n                    document.getElementById('mensaje').style.color = '#27ae60';\n                }\n            } else {\n                // Fallo\n                document.getElementById('mensaje').textContent = '❌ Ese no es. ¡Intenta de nuevo!';\n                document.getElementById('mensaje').style.color = '#e74c3c';\n            }\n        }\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montañas de España - Juego Interactivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .game-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            height: 600px;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        .sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow-y: auto;
+            max-height: 600px;
+        }
+        .sidebar h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .nombres-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn-nombre {
+            padding: 12px;
+            border: 2px solid #ddd;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: #333;
+        }
+        .btn-nombre:hover:not(.acertado) {
+            background: #e7f3ff;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        .btn-nombre.seleccionado {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .btn-nombre.acertado {
+            background: #27ae60;
+            color: white;
+            border-color: #27ae60;
+            cursor: default;
+        }
+        .mensaje {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: #667eea;
+        }
+        .footer {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .btn-reiniciar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-reiniciar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        @media (max-width: 768px) {
+            .game-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Montañas de España</h1>
+            <p>Identifica cada zona geográfica en el mapa interactivo</p>
+        </div>
+
+        <div class="game-wrapper">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="sidebar">
+                <h3>📍 Localiza:</h3>
+                <div class="nombres-list" id="nombresList"></div>
+                <div class="mensaje" id="mensaje">¡Elige un nombre para empezar!</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="score">⭐ Puntuación: <span id="puntuacion">0</span> / 17</div>
+            <button class="btn-reiniciar" onclick="location.reload()">🔄 Reiniciar Juego</button>
+        </div>
+    </div>
+
+    <script>
+        const map = L.map('map').setView([40.5, -3.7], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 12,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        const zonas = [
+            { id: 1, nombre: 'Macizo Galaico', lat: 42.5, lng: -8.0, color: '#e74c3c' },
+            { id: 2, nombre: 'Montes de León', lat: 42.7, lng: -6.0, color: '#e74c3c' },
+            { id: 3, nombre: 'Cordillera Cantábrica', lat: 43.2, lng: -4.5, color: '#e74c3c' },
+            { id: 4, nombre: 'Montes Vascos', lat: 42.9, lng: -2.7, color: '#e74c3c' },
+            { id: 5, nombre: 'Pirineos', lat: 42.6, lng: 0.5, color: '#e74c3c' },
+            { id: 6, nombre: 'Depresión del Ebro', lat: 41.8, lng: 0.0, color: '#f39c12' },
+            { id: 7, nombre: 'Sistema Ibérico', lat: 41.5, lng: -1.8, color: '#e74c3c' },
+            { id: 8, nombre: 'Submeseta Norte', lat: 41.2, lng: -3.5, color: '#f39c12' },
+            { id: 9, nombre: 'Cordillera del Guadarrama', lat: 40.8, lng: -3.9, color: '#e74c3c' },
+            { id: 10, nombre: 'Sistema Central', lat: 40.5, lng: -4.5, color: '#e74c3c' },
+            { id: 11, nombre: 'Montes de Toledo', lat: 39.9, lng: -4.0, color: '#e74c3c' },
+            { id: 12, nombre: 'Submeseta Sur', lat: 39.5, lng: -2.5, color: '#f39c12' },
+            { id: 13, nombre: 'Sierra Morena', lat: 38.8, lng: -3.8, color: '#e74c3c' },
+            { id: 14, nombre: 'Depresión del Guadalquivir', lat: 37.8, lng: -4.5, color: '#f39c12' },
+            { id: 15, nombre: 'Montes de Córdoba', lat: 38.5, lng: -4.2, color: '#e74c3c' },
+            { id: 16, nombre: 'Cordillera Penibética', lat: 37.0, lng: -3.5, color: '#e74c3c' },
+            { id: 17, nombre: 'Telde (Canarias)', lat: 27.9, lng: -15.6, color: '#e74c3c' }
+        ];
+
+        let nombreSeleccionado = null;
+        let aciertos = 0;
+        const markers = {};
+        const botones = {};
+
+        const nombresList = document.getElementById('nombresList');
+        zonas.forEach(zona => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-nombre';
+            btn.textContent = zona.nombre;
+            btn.dataset.id = zona.id;
+            btn.onclick = () => seleccionarNombre(zona.id, btn);
+            nombresList.appendChild(btn);
+            botones[zona.id] = btn;
+        });
+
+        zonas.forEach(zona => {
+            const marker = L.circleMarker([zona.lat, zona.lng], {
+                radius: 15,
+                fillColor: zona.color,
+                color: '#fff',
+                weight: 3,
+                opacity: 1,
+                fillOpacity: 0.8,
+                className: 'zona-marker'
+            }).addTo(map);
+
+            marker.bindPopup(`<b>${zona.nombre}</b>`);
+            marker.on('click', () => verificarRespuesta(zona.id));
+            markers[zona.id] = marker;
+        });
+
+        function seleccionarNombre(id, btn) {
+            if (btn.classList.contains('acertado')) return;
+            Object.values(botones).forEach(b => b.classList.remove('seleccionado'));
+            btn.classList.add('seleccionado');
+            nombreSeleccionado = id;
+            document.getElementById('mensaje').textContent = '🎯 Ahora haz clic en su ubicación en el mapa';
+            document.getElementById('mensaje').style.color = '#667eea';
+        }
+
+        function verificarRespuesta(id) {
+            if (!nombreSeleccionado) {
+                document.getElementById('mensaje').textContent = '⚠️ Primero selecciona un nombre';
+                document.getElementById('mensaje').style.color = '#e74c3c';
+                return;
+            }
+
+            if (id === nombreSeleccionado) {
+                markers[id].setStyle({ fillColor: '#27ae60' });
+                botones[id].classList.remove('seleccionado');
+                botones[id].classList.add('acertado');
+                document.getElementById('mensaje').textContent = '✅ ¡Correcto! 🎉';
+                document.getElementById('mensaje').style.color = '#27ae60';
+                aciertos++;
+                document.getElementById('puntuacion').textContent = aciertos;
+                nombreSeleccionado = null;
+                if (aciertos === 17) {
+                    document.getElementById('mensaje').textContent = '🏆 ¡FELICIDADES! ¡Has completado el mapa!';
+                    document.getElementById('mensaje').style.color = '#27ae60';
+                }
+            } else {
+                document.getElementById('mensaje').textContent = '❌ Ese no es. ¡Intenta de nuevo!';
+                document.getElementById('mensaje').style.color = '#e74c3c';
+            }
+        }
+    </script>
+</body>
+</html>
