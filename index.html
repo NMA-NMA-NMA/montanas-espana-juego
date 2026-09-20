@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montañas de España - Juego Interactivo</title>
+    <title>Montañas de España - Juego Interactivo | Autor: NMA-NMA-NMA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <style>
@@ -116,6 +116,7 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
         .score {
             font-size: 1.3rem;
@@ -137,12 +138,79 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
+        .credits {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            border-left: 5px solid #667eea;
+        }
+        .credits h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .credits p {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .credits a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .credits a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        .author-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        .license-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+        .warning {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            color: #856404;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
         @media (max-width: 768px) {
             .game-wrapper {
                 grid-template-columns: 1fr;
             }
             .header h1 {
                 font-size: 1.8rem;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .credits {
+                border-left: none;
+                border-top: 5px solid #667eea;
             }
         }
     </style>
@@ -169,6 +237,29 @@
         <div class="footer">
             <div class="score">⭐ Puntuación: <span id="puntuacion">0</span> / 17</div>
             <button class="btn-reiniciar" onclick="location.reload()">🔄 Reiniciar Juego</button>
+        </div>
+
+        <div class="credits">
+            <h3>👨‍💻 Créditos y Autoría</h3>
+            <div class="author-badge">👤 Autor Original: NMA-NMA-NMA</div>
+            <p><strong>Este es un proyecto educativo creado por NMA-NMA-NMA</strong></p>
+            <p>Herramienta interactiva para la enseñanza de geografía de España</p>
+            
+            <div style="margin: 15px 0;">
+                <span class="license-badge">📜 CC BY-NC-SA 4.0</span>
+                <span class="license-badge">🔒 No Comercial</span>
+            </div>
+            
+            <p><strong>Licencia:</strong> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">Creative Commons Atribución - No Comercial - Compartir Igual 4.0</a></p>
+            
+            <p style="margin-top: 12px;">
+                📱 <strong>Alojado en:</strong> GitHub Pages<br>
+                💻 <strong>Repositorio:</strong> <a href="https://github.com/NMA-NMA-NMA/montanas-espana-juego" target="_blank">github.com/NMA-NMA-NMA/montanas-espana-juego</a>
+            </p>
+            
+            <div class="warning">
+                ⚠️ <strong>Uso permitido:</strong> Solo para propósitos educativos sin ánimo de lucro. La comercialización requiere consentimiento expreso del autor.
+            </div>
         </div>
     </div>
 
