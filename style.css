@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
@@ -19,7 +19,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     padding: 40px;
-    max-width: 1400px;
+    max-width: 1600px;
     width: 100%;
 }
 
@@ -28,6 +28,7 @@ h1 {
     color: #333;
     margin-bottom: 10px;
     font-size: 2.5em;
+    letter-spacing: 1px;
 }
 
 .instrucciones {
@@ -39,184 +40,234 @@ h1 {
 
 .juego-container {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 30px;
     margin-bottom: 30px;
 }
 
 .mapa-section {
     position: relative;
-    background: #f0f0f0;
-    border-radius: 10px;
+    background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
+    border-radius: 15px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 500px;
+    min-height: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 3px solid #667eea;
 }
 
 .mapa {
-    max-width: 100%;
-    max-height: 600px;
+    max-width: 95%;
+    max-height: 95%;
     display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .zona {
     position: absolute;
-    min-width: 70px;
-    min-height: 50px;
-    background: rgba(102, 126, 234, 0.15);
-    border: 2px solid #667eea;
-    border-radius: 8px;
+    min-width: 75px;
+    min-height: 55px;
+    background: rgba(255, 107, 107, 0.2);
+    border: 2.5px solid #FF6B6B;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.75em;
-    color: #667eea;
+    font-size: 0.8em;
+    color: #d63031;
     font-weight: bold;
     text-align: center;
     padding: 5px;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .zona:hover {
-    background: rgba(102, 126, 234, 0.25);
-    border-color: #764ba2;
-    transform: scale(1.05);
+    background: rgba(255, 107, 107, 0.35);
+    border-color: #d63031;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
 }
 
 .zona.activa {
-    background: rgba(76, 175, 80, 0.3);
-    border-color: #4CAF50;
-    color: #2e7d32;
+    background: rgba(76, 175, 80, 0.4);
+    border-color: #2e7d32;
+    color: #1b5e20;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
 }
 
 .nombres-section {
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #667eea;
 }
 
 .nombres-section h3 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #333;
-    font-size: 1.1em;
+    font-size: 1.3em;
+    text-align: center;
 }
 
 .nombres-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     overflow-y: auto;
     max-height: 550px;
     padding-right: 10px;
+    justify-content: center;
 }
 
 .nombres-container::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .nombres-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(102, 126, 234, 0.1);
     border-radius: 10px;
 }
 
 .nombres-container::-webkit-scrollbar-thumb {
-    background: #667eea;
+    background: linear-gradient(180deg, #667eea, #764ba2);
     border-radius: 10px;
 }
 
 .nombres-container::-webkit-scrollbar-thumb:hover {
-    background: #764ba2;
+    background: linear-gradient(180deg, #764ba2, #667eea);
 }
 
 .nombre-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
+    padding: 12px 18px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 0.9em;
-    font-weight: bold;
+    font-size: 0.95em;
+    font-weight: 600;
     transition: all 0.3s ease;
     user-select: none;
     white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
 }
 
 .nombre-btn:hover:not(.usado) {
-    transform: scale(1.08);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5);
+}
+
+.nombre-btn:active:not(.usado) {
+    transform: translateY(-1px) scale(1.05);
 }
 
 .nombre-btn.usado {
-    background: #4CAF50;
-    opacity: 0.6;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    opacity: 0.7;
     cursor: not-allowed;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
 }
 
 .info-game {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f0f0f0;
-    padding: 15px 20px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px 30px;
+    border-radius: 15px;
     margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .info-game p {
-    font-size: 1.2em;
-    color: #333;
+    font-size: 1.3em;
+    color: white;
     font-weight: bold;
 }
 
 #puntuacion {
-    color: #667eea;
-    font-size: 1.3em;
+    color: #FFD700;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .btn-reiniciar {
-    background: #FF6B6B;
+    background: linear-gradient(135deg, #FF6B6B, #ee5a52);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 25px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.05em;
     font-weight: bold;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
 }
 
 .btn-reiniciar:hover {
-    background: #FF5252;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, #ee5a52, #d63031);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.5);
+}
+
+.btn-reiniciar:active {
+    transform: translateY(0);
 }
 
 .mensaje {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: bold;
-    padding: 15px;
-    border-radius: 10px;
-    min-height: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 50px;
     display: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .mensaje.exito {
-    background: #C8E6C9;
-    color: #2E7D32;
+    background: linear-gradient(135deg, #C8E6C9, #81C784);
+    color: #1b5e20;
     display: block;
+    animation: slideIn 0.3s ease;
 }
 
 .mensaje.completo {
-    background: #FFE082;
-    color: #F57C00;
+    background: linear-gradient(135deg, #FFE082, #FFD54F);
+    color: #F57F17;
     display: block;
-    font-size: 1.5em;
+    font-size: 1.7em;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@media (max-width: 1200px) {
+    .juego-container {
+        grid-template-columns: 1.5fr 1fr;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -225,7 +276,7 @@ h1 {
     }
     
     .mapa-section {
-        min-height: 400px;
+        min-height: 500px;
     }
 }
 
@@ -238,18 +289,27 @@ h1 {
         padding: 20px;
     }
     
+    .mapa-section {
+        min-height: 400px;
+    }
+    
     .nombres-container {
         max-height: 300px;
     }
     
     .nombre-btn {
-        padding: 8px 12px;
+        padding: 10px 14px;
         font-size: 0.85em;
     }
     
     .zona {
-        min-width: 60px;
-        min-height: 45px;
+        min-width: 65px;
+        min-height: 50px;
         font-size: 0.7em;
+    }
+    
+    .info-game {
+        flex-direction: column;
+        gap: 15px;
     }
 }

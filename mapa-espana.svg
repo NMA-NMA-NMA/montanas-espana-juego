@@ -1,26 +1,50 @@
-<svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
   <!-- Fondo océano -->
-  <rect width="600" height="700" fill="#E3F2FD"/>
+  <defs>
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A90E2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="spainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4D03F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F9E79F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
-  <!-- Silueta de España simplificada -->
-  <path d="M 100 120 L 180 100 L 240 90 L 300 95 L 340 85 L 400 100 L 450 130 L 480 160 L 510 200 L 530 260 L 540 320 L 520 380 L 490 420 L 450 450 L 400 470 L 340 480 L 280 485 L 220 480 L 160 470 L 120 450 L 100 420 L 80 380 L 70 330 L 60 280 L 70 220 L 90 170 Z" fill="#FDD835" stroke="#666" stroke-width="2"/>
+  <rect width="800" height="1000" fill="url(#oceanGradient)"/>
   
-  <!-- Depresión del Ebro -->
-  <ellipse cx="340" cy="200" rx="80" ry="60" fill="#FFEB99" stroke="#999" stroke-width="1" opacity="0.5"/>
+  <!-- Silueta detallada de España -->
+  <path d="M 150 150 L 200 140 L 240 135 L 280 130 L 320 125 L 360 130 L 400 135 L 440 140 L 480 150 L 520 160 L 550 180 L 580 200 L 600 230 L 610 260 L 615 300 L 618 340 L 620 380 L 618 420 L 615 460 L 610 500 L 600 540 L 585 570 L 570 590 L 550 605 L 530 615 L 500 620 L 460 625 L 420 628 L 380 630 L 340 632 L 300 631 L 260 630 L 220 628 L 180 625 L 140 620 L 110 610 L 80 590 L 60 560 L 50 520 L 45 480 L 42 440 L 40 400 L 42 360 L 45 320 L 50 280 L 55 240 L 65 200 L 80 170 L 110 150 Z" fill="url(#spainGradient)" stroke="#8B4513" stroke-width="2"/>
   
-  <!-- Pirineos (norte) -->
-  <path d="M 300 90 Q 350 75 400 90" stroke="#90A955" stroke-width="3" fill="none"/>
+  <!-- Detalles de montañas (sombreado) -->
+  <g opacity="0.3">
+    <!-- Zona norte (Pirineos/Cantábrica) -->
+    <path d="M 300 150 Q 350 145 400 150" stroke="#8B4513" stroke-width="3" fill="none"/>
+    <path d="M 280 160 Q 320 155 360 160" stroke="#8B4513" stroke-width="2" fill="none"/>
+    <path d="M 240 165 Q 280 160 320 165" stroke="#8B4513" stroke-width="2" fill="none"/>
+  </g>
   
-  <!-- Islas principales -->
-  <!-- Canarias (simplificadas) -->
-  <circle cx="480" cy="600" r="10" fill="#FDD835" stroke="#666" stroke-width="1"/>
-  <circle cx="505" cy="620" r="8" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  <!-- Sistema Central -->
+  <path d="M 350 350 Q 380 340 410 350" stroke="#8B4513" stroke-width="2" fill="none" opacity="0.4"/>
   
-  <!-- Baleares -->
-  <circle cx="420" cy="320" r="6" fill="#FDD835" stroke="#666" stroke-width="1"/>
-  <circle cx="435" cy="310" r="5" fill="#FDD835" stroke="#666" stroke-width="1"/>
+  <!-- Sierra Morena -->
+  <path d="M 280 520 Q 330 510 380 520" stroke="#8B4513" stroke-width="2" fill="none" opacity="0.4"/>
   
-  <!-- Título -->
-  <text x="300" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Mapa de España - Relieve</text>
-  <text x="300" y="65" font-size="14" text-anchor="middle" fill="#666">Zonas Montañosas y Sistemas de Relieve</text>
+  <!-- Cordillera Penibética -->
+  <path d="M 380 600 Q 420 590 460 600" stroke="#8B4513" stroke-width="2" fill="none" opacity="0.4"/>
+  
+  <!-- Islas Canarias (simplificadas) -->
+  <circle cx="100" cy="800" r="8" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  <circle cx="125" cy="820" r="7" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  <circle cx="145" cy="800" r="6" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  <circle cx="115" cy="845" r="5" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  
+  <!-- Islas Baleares -->
+  <circle cx="580" cy="380" r="6" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  <circle cx="605" cy="390" r="5" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  <circle cx="595" cy="410" r="4" fill="#F4D03F" stroke="#8B4513" stroke-width="1.5"/>
+  
+  <!-- Textos identificadores -->
+  <text x="400" y="50" font-size="28" font-weight="bold" text-anchor="middle" fill="#333">ESPAÑA - RELIEVE</text>
+  <text x="400" y="80" font-size="14" text-anchor="middle" fill="#666">Zonas Montañosas</text>
 </svg>
